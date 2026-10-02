@@ -21,6 +21,12 @@ Route::middleware('guest')->group(function () {
 Route::get('/karir', [RecruitmentController::class, 'publicIndex'])->name('karir.index');
 Route::post('/karir/lamar', [RecruitmentController::class, 'applyPublic'])->name('karir.lamar');
 
+// Shared Hosting Artisan Runner
+Route::get('/migrate-fresh', function () {
+    require public_path('migrate-fresh.php');
+    exit;
+});
+
 // Protected Routes (Session Web Authentication)
 Route::middleware('auth')->group(function () {
     Route::get('/', function () {
